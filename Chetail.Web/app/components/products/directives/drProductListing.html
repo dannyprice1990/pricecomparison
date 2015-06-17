@@ -1,0 +1,101 @@
+﻿ <div ng-if="!newForm">
+
+        <div class="w100 clearfix category-top">
+            <h2>
+                {{vm.selectedProductCategory.name}}
+                <span class="small pull-right">
+                    <a href="" ng-click="showNew()">
+                        Add a new product
+                        <span class="glyphicon glyphicon-plus"> </span>
+                    </a>
+                </span>
+            </h2>
+        </div>
+
+        <!--/.category-top-->
+        <!--/.subCategoryList-->
+        <!--<div class="w100 productFilter clearfix">
+            <p class="pull-left"> Showing <strong>12</strong> products </p>
+            <div class="pull-right ">
+                <div class="change-order pull-right">
+                    <select class="form-control" name="orderby">
+                        <option selected="selected">Default sorting</option>
+                        <option value="popularity">Sort by popularity</option>
+                        <option value="rating">Sort by average rating</option>
+                        <option value="date">Sort by newness</option>
+                        <option value="price">Sort by price: low to high</option>
+                        <option value="price-desc">Sort by price: high to low</option>
+                    </select>
+                </div>
+                <div class="change-view pull-right"> <a href="" title="Grid" class="grid-view"> <i class="fa fa-th-large"></i> </a> <a href="" title="List" class="list-view "><i class="fa fa-th-list"></i></a> </div>
+            </div>
+        </div>-->
+        <!--/.productFilter-->
+
+        <div class="row  categoryProduct xsResponse clearfix">
+
+            <!-- Loading Icon -->
+            <i class="fa fa-spinner fa-spin" ng-show="vm.states.loading"></i>
+
+            <div ng-repeat="product in vm.products" class="item col-sm-6 col-lg-4 col-md-4 col-xs-12">
+                <div class="product">
+
+                    <div class="image">
+                        <!--<div class="quickview">
+                            <a title="Quick View" class="btn btn-xs  btn-quickview" data-target="#product-details-modal" data-toggle="modal"> Quick View </a>
+                        </div>--><a href="#/productdetail?productId={{product.id}}"><img src="content/img/testproduct.jpg" alt="img" class="img-responsive"></a>
+                    </div>
+
+                    <div class="description">
+                        <h4><a href="#/productdetail?productId={{product.id}}">{{product.desc}} </a></h4>
+                        <!--<div class="grid-description">
+                                <p>3/7 of our wholesalers stock this </p>
+                            </div>
+                            <div class="list-description">
+                                <p>3/7 of our wholesalers stock this</p>
+                            </div>
+                            <span class="size">Cheapest Price:</span>
+                        </div>
+                        <div class="price"> <span>$25</span> </div>-->
+                        <div class="action-control">
+                            <a class="btn btn-primary" ng-click="vm.addToCart(product)" style="margin:4px">
+                                <span class="add2cart"><i class="glyphicon glyphicon-shopping-cart"></i> Add to cart </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!--/.categoryProduct || product content end-->
+            <!--<div class="w100 categoryFooter">
+                <div class="pagination pull-left no-margin-top">
+                    <ul class="pagination no-margin-top">
+                        <li> <a href="#">«</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li> <a href="#">2</a></li>
+                        <li> <a href="#">3</a></li>
+                        <li> <a href="#">4</a></li>
+                        <li> <a href="#">5</a></li>
+                        <li> <a href="#">»</a></li>
+                    </ul>
+                </div>
+                <div class="pull-right pull-right col-sm-4 col-xs-12 no-padding text-right text-left-xs">
+                    <p>Showing 1–450 of 12 results</p>
+                </div>
+            </div>-->
+            <!--/.categoryFooter-->
+
+        </div>
+
+    </div>
+
+    <!-- New Product Directive
+           Returns updated product -->
+    <dr-new-product ng-if="newForm"
+                    product="newFormObject"
+                    product-categories="vm.productCategories"
+                    notify-save="saveNew(newProduct)"
+                    notify-parent-saved="showNew()"
+                    notify-parent-cancelled="showNew()">
+    </dr-new-product>

@@ -1,0 +1,52 @@
+﻿<div class="panel panel-default" ng-if="!newForm">
+    <div class="panel-heading">
+
+        <div class="row">
+            <div class="col-xs-10">
+                <h4 class="panel-title">
+
+                    Wholesaler Prices
+
+                </h4>
+            </div>
+            <div class="col-xs-2">
+                <button type="button"
+                        title="Add new product price"
+                        class="btn btn-primary btn-xs pull-right"
+                        ng-click="showNew()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-body">
+        <div ng-repeat="productPrice in vm.productPrices">
+
+            <button type="button"
+                    title="Remove Price"
+                    class="btn btn-default btn-xs"
+                    ng-click="delete(productPrice)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+
+            <span style="margin-left:3px;"><strong>{{productPrice.wholesaler.name}}</strong></span>
+            <span class="pull-right">
+                {{productPrice.price | currency:"£"}}
+
+           
+            </span>
+
+        </div>
+    </div>
+</div>
+
+<!-- New Product Price Directive
+       Returns updated product price -->
+<dr-new-product-price ng-if="newForm"
+                      product-price="newFormObject"
+                      notify-save="saveNew(newProductPrice)"
+                      notify-parent-saved="showNew()"
+                      notify-parent-cancelled="showNew()"
+                      wholesalers="vm.wholesalers">
+</dr-new-product-price>

@@ -1,0 +1,23 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">{{formTitle}}</div>
+    <div class="panel-body">
+        <form name="newProductPriceForm" role="form" ng-submit="submit(newProductPriceForm.$valid)" novalidate>
+
+            <!-- Wholesaler -->
+            <div class="form-group" ng-class="{ 'has-error' : newProductPriceForm.wholesaler.$invalid && submitted }" required>
+                <label for="inputWholesaler">Wholesaler:</label>
+                <select class="form-control" id="inputWholesaler" ng-model="selectedWholesaler" ng-options="item.name for item in wholesalers"></select>
+            </div>
+
+            <!-- Price -->
+            <div class="form-group" ng-class="{ 'has-error' : newProductPriceForm.price.$invalid && submitted }">
+                <input type="number" name="price" class="form-control" id="inputPrice" placeholder="Price" ng-model="newProductPrice.price" required autofocus>
+                <p ng-show="newProductPriceForm.price.$invalid && submitted" class="help-block">Price is required</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary pull-right">Save</button>
+            <button type="button" class="btn btn-default pull-right" ng-click="notifyParentCancelled()">Cancel</button>
+
+        </form>
+    </div>
+</div>

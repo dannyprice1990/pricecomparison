@@ -1,0 +1,110 @@
+﻿<div ng-controller="ResultsCtrl as vm">
+
+    <div class="row">
+        <div class="breadcrumbDiv col-lg-12">
+            <ul class="breadcrumb">
+                <li> <a href="#/home">Home</a> </li>
+                <li><a href="#/cart">Cart</a> </li>
+                <li class="active">Results </li>
+            </ul>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-7">
+            <h1 class="section-title-inner"><span><i class="glyphicon glyphicon-ok"></i> Results </span></h1>
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
+            <h4 class="caps"><a href="#/cart"><i class="fa fa-chevron-left"></i> Back to Cart </a></h4>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row" ng-if="vm.cartResult.cartResultItems">
+        <div class="col-lg-9 col-md-9 col-sm-7 pull-right">
+            <div class="row userInfo">
+                <div class="col-xs-12 col-sm-12">
+
+
+
+                        <accordion close-others="false">
+                            <accordion-group is-open="resultItem.isOpen" ng-repeat="resultItem in vm.cartResult.cartResultItems">
+                                <accordion-heading>
+                                    <div>
+                                        <strong>{{resultItem.wholesaler.name}}</strong>
+
+                                        <span class="pull-right">
+                                            <span style="font-size:12px" ng-if="resultItem.allProductsAvail">
+                                                All products available:
+                                            </span>
+                                            <span style="font-size:12px" ng-if="!resultItem.allProductsAvail">
+                                                {{resultItem.productsAvailCount}} out of {{resultItem.products.length}} products available
+                                            </span>
+                                            <span style="font-size:22px">
+                                                <i style="color:green" class="glyphicon glyphicon-ok" ng-if="resultItem.allProductsAvail"></i>
+                                                <i style="color:red" class="glyphicon glyphicon-remove" ng-if="!resultItem.allProductsAvail"></i>
+                                            </span>
+                                        </span>
+
+                                        <br />
+                                        Total Price: 
+                                        <strong>
+                                            <span class="success" style="font-size:22px" ng-if="resultItem.allProductsAvail">
+                                                {{resultItem.price | currency:"£"}}
+                                            </span>
+                                            <span style="font-size:22px" ng-if="!resultItem.allProductsAvail">
+                                                {{resultItem.price | currency:"£"}}
+                                            </span>
+                                        </strong>
+                                        <br />
+                                    </div>
+
+                                </accordion-heading>
+
+                                <div ng-repeat="product in resultItem.products">
+                                    <span>
+                                        <i style="color:green" class="glyphicon glyphicon-ok" ng-if="product.sellsProduct"></i>
+                                        <i style="color:red" class="glyphicon glyphicon-remove" ng-if="!product.sellsProduct"></i>
+                                    </span>
+                                    <a href="#/productdetail?productId={{product.id}}" target="_blank">
+                                        <span>{{product.qty}} x {{product.desc}} <strong>({{product.price | currency:"£"}})</strong></span>
+                                        <span></span>
+                                    </a>
+                                </div>
+
+                            </accordion-group>
+
+                        </accordion>
+
+                    </div>
+                    </div>
+                    <!--/row end-->
+
+                </div>
+        <div class="col-lg-3 col-md-3 col-sm-5 pull-left">
+
+            <div class="panel panel-default animated fadeIn">
+                <div class="panel-heading"><strong>Top Result</strong></div>
+                <div class="panel-body">
+                    <span style="font-size:22px">{{vm.cartResult.topResult.wholesaler.name}}</span>
+             
+                    <span class="pull-right"> <strong><span class="pull-right" style="font-size:22px">{{vm.cartResult.topResult.price | currency:"£"}}</span></strong></span>
+                    <br />
+                    <span style="font-size:12px" ng-if="vm.cartResult.topResult.allProductsAvail">
+                        (All products available)
+                    </span>
+                    <span style="font-size:12px" ng-if="!vm.cartResult.topResult.allProductsAvail">
+                        {{vm.cartResult.topResult.productsAvailCount}} out of {{vm.cartResult.topResult.products.length}} products available
+                    </span>         
+                </div>
+
+            </div>
+
+        </div>
+        <!--/rightSidebar-->
+
+    </div><!--/row-->
+
+    <div class="gap"> </div>
+
+</div>

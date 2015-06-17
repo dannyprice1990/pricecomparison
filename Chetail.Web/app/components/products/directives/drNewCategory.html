@@ -1,0 +1,17 @@
+﻿<div class="panel panel-default animated fadeIn">
+    <div class="panel-heading">{{formTitle}}</div>
+    <div class="panel-body">
+        <form name="newCategoryForm" role="form" ng-submit="submit(newCategoryForm.$valid)" novalidate>
+
+            <!-- Name -->
+            <div class="form-group" ng-class="{ 'has-error' : newCategoryForm.name.$invalid && submitted }">
+                <input type="text" name="name" class="form-control" id="inputName" placeholder="Category Name" ng-model="newCategory.name" required autofocus>
+                <p ng-show="newCategoryForm.name.$invalid && submitted" class="help-block">Category name is required</p>
+            </div>
+         
+            <button type="submit" class="btn btn-primary pull-right">Save</button>
+            <button type="button" class="btn btn-default pull-right" ng-click="notifyParentCancelled()">Cancel</button>
+
+        </form>
+    </div>
+</div>

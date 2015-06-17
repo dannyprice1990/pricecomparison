@@ -1,0 +1,41 @@
+﻿ <!-- Main component call to action -->
+
+<div class="row">
+    <div class="breadcrumbDiv col-lg-12">
+        <ul class="breadcrumb">
+            <li> <a href="#/home">Home</a> </li>
+            <!--<li class="active">MEN COLLECTION </li>-->
+        </ul>
+    </div>
+</div>
+<!-- /.row  -->
+
+<div class="row">
+
+    <!--left column-->
+
+    <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="panel-group" id="accordionNo">
+
+            <!--Product Categories-->
+            <div ng-controller="ProductCategoriesCtrl as vm">
+                <dr-categories-sidebar></dr-categories-sidebar>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-md-9 col-sm-6">
+
+        <!--Product Listing-->
+        <div ng-controller="ProductsCtrl as vm">
+            <dr-product-listing></dr-product-listing>
+        </div>
+
+    </div>
+
+
+</div>
+<!-- /.row  -->
+
+<div class="gap"> </div>

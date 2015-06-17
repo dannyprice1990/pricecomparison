@@ -1,0 +1,29 @@
+﻿<div class="panel panel-default animated fadeIn">
+    <div class="panel-heading">{{formTitle}}</div>
+    <div class="panel-body">
+        <form name="newProductForm" role="form" ng-submit="submit(newProductForm.$valid)" novalidate>
+
+            <!-- Code -->
+            <div class="form-group" ng-class="{ 'has-error' : newProductForm.code.$invalid && submitted }">
+                <input type="text" name="code" class="form-control" id="inputCode" placeholder="Product Code" ng-model="newProduct.code" required autofocus>
+                <p ng-show="newProductForm.code.$invalid && submitted" class="help-block">Product Code is required</p>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group" ng-class="{ 'has-error' : newProductForm.desc.$invalid && submitted }">
+                <input type="text" name="desc" class="form-control" id="inputDesc" placeholder="Product Description" ng-model="newProduct.desc" required>
+                <p ng-show="newProductForm.desc.$invalid && submitted" class="help-block">Product Description is required</p>
+            </div>
+
+            <!-- Product Category -->
+            <div class="form-group" ng-class="{ 'has-error' : newProductForm.category.$invalid && submitted }" required>
+                <label for="inputCategory">Product Category:</label>
+                <select class="form-control" id="inputCategory" ng-model="selectedCategory" ng-options="item.name for item in productCategories"></select>
+            </div>
+
+            <button type="submit" class="btn btn-primary pull-right">Save</button>
+            <button type="button" class="btn btn-default pull-right" ng-click="notifyParentCancelled()">Cancel</button>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <title>Chetail - Price Comparison</title>
+    <!-- Bootstrap core CSS -->
+    <link href="content/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="content/template/css/style.css" rel="stylesheet">
+
+    <!-- Toastr -->
+    <link href="content/toaster.min.css" rel="stylesheet" />
+
+    <!-- styles needed by checkRadio -->
+    <link href="content/template/cssion.checkRadio.css" rel="stylesheet">
+    <link href="content/template/cssion.checkRadio.cloudy.css" rel="stylesheet">
+    <!-- styles needed by mCustomScrollbar -->
+    <link href="content/template/cssjquery.mCustomScrollbar.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- include pace script for automatic web page progress bar  -->
+
+    <script>
+        paceOptions = {
+            elements: true
+        };
+    </script>
+
+    <script src="scripts/template/pace.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Modal Login start -->
+    <div class="modal signUpContent fade" id="ModalLogin" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+                    <h3 class="modal-title-site text-center"> Login to Chetail </h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group login-username">
+                        <div>
+                            <input name="log" id="login-user" class="form-control input" size="20" placeholder="Enter Username" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group login-password">
+                        <div>
+                            <input name="Password" id="login-password" class="form-control input" size="20" placeholder="Password" type="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <div class="checkbox login-remember">
+                                <label>
+                                    <input name="rememberme" value="forever" checked="checked" type="checkbox">
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <input name="submit" class="btn  btn-block btn-lg btn-primary" value="LOGIN" type="submit">
+                        </div>
+                    </div>
+                    <!--userForm-->
+
+                </div>
+                <div class="modal-footer">
+                    <p class="text-center">
+                        Not here before? <a data-toggle="modal" data-dismiss="modal" href="#ModalSignup"> Sign Up. </a> <br>
+                        <a href="forgot-password.html"> Lost your password? </a>
+                    </p>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+
+        </div>
+        <!-- /.modal-dialog -->
+
+    </div>
+    <!-- /.Modal Login -->
+    <!-- Modal Signup start -->
+    <div class="modal signUpContent fade" id="ModalSignup" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+                    <h3 class="modal-title-site text-center"> REGISTER </h3>
+                </div>
+                <div class="modal-body">
+                    <div class="control-group"> <a class="fb_button btn  btn-block btn-lg " href="#"> SIGNUP WITH FACEBOOK </a> </div>
+                    <h5 style="padding:10px 0 10px 0;" class="text-center"> OR </h5>
+                    <div class="form-group reg-username">
+                        <div>
+                            <input name="login" class="form-control input" size="20" placeholder="Enter Username" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group reg-email">
+                        <div>
+                            <input name="reg" class="form-control input" size="20" placeholder="Enter Email" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group reg-password">
+                        <div>
+                            <input name="password" class="form-control input" size="20" placeholder="Password" type="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <div class="checkbox login-remember">
+                                <label>
+                                    <input name="rememberme" id="rememberme" value="forever" checked="checked" type="checkbox">
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <input name="submit" class="btn  btn-block btn-lg btn-primary" value="REGISTER" type="submit">
+                        </div>
+                    </div>
+                    <!--userForm-->
+
+                </div>
+                <div class="modal-footer">
+                    <p class="text-center"> Already member? <a data-toggle="modal" data-dismiss="modal" href="#ModalLogin"> Sign in </a> </p>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+
+        </div>
+        <!-- /.modal-dialog -->
+
+    </div>
+
+    <!-- Fixed navbar start -->
+    <div class="navbar navbar-tshop navbar-fixed-top megamenu" role="navigation">
+        <div class="navbar-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+                        <div class="pull-left ">
+                            <!--<ul class="userMenu ">
+                                <li> <a href="#"> <span class="hidden-xs">HELP</span><i class="glyphicon glyphicon-info-sign hide visible-xs "></i> </a> </li>
+                                <li class="phone-number"> <a href="callto:+8801680531352"> <span> <i class="glyphicon glyphicon-phone-alt "></i></span> <span class="hidden-xs" style="margin-left:5px"> 88 01680 53 1352 </span> </a> </li>
+                            </ul>-->
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
+                        <div class="pull-right">
+                            <ul class="userMenu">
+                                <li> <a href=""><span class="hidden-xs"> My Account</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
+                                <li> <a href="" data-toggle="modal" data-target="#ModalLogin"> <span class="hidden-xs">Sign In</span> <i class="glyphicon glyphicon-log-in hide visible-xs "></i> </a> </li>
+                                <li class="hidden-xs"> <a href="" data-toggle="modal" data-target="#ModalSignup"> Create Account </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.navbar-top-->
+
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only"> Toggle navigation </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span> </button>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-cart"> <i class="fa fa-shopping-cart colorWhite"> </i> <span ng-cloak class="cartRespons colorWhite"> Cart (0 items) </span> </button>
+                <a class="navbar-brand " style="color:white" href="#/home">
+                    <!--<img src="images/logo.png" alt="TSHOP">-->
+                    Chetail <span style="font-size:18px; color:lightcyan ">Prototype</span>
+                </a>
+
+          
+                <!-- this part for mobile -->
+                <div class="search-box pull-right hidden-lg hidden-md hidden-sm">
+                    <div class="input-group">
+                        <button class="btn btn-nobg getFullSearch" type="button"> <i class="fa fa-search"> </i> </button>
+                    </div>
+                    <!-- /input-group -->
+
+                </div>
+            </div>
+
+            <!-- this part is duplicate from cartMenu  keep it for mobile -->
+            <div class="navbar-cart  collapse">
+                <div class="cartMenu  col-lg-4 col-xs-12 col-md-4 ">
+                    <div class="w100 miniCartTable scroll-pane">
+                        <table>
+                            <tbody>
+                                <tr class="miniCartProduct">
+                                    <td style="20%" class="miniCartProductThumb"><div> <a href="product-details.html"> <img src="images/product/3.jpg" alt="img"> </a> </div></td>
+                                    <td style="40%">
+                                        <div class="miniCartDescription">
+                                            <h4> <a href="product-details.html"> TSHOP T shirt Black </a> </h4>
+                                            <span class="size"> 12 x 1.5 L </span>
+                                            <div class="price"> <span> $8.80 </span> </div>
+                                        </div>
+                                    </td>
+                                    <td style="10%" class="miniCartQuantity"><a> X 1 </a></td>
+                                    <td style="15%" class="miniCartSubtotal"><span> $8.80 </span></td>
+                                    <td style="5%" class="delete"><a> x </a></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--/.miniCartTable-->
+
+                    <div class="miniCartFooter  miniCartFooterInMobile text-right">
+                        <h3 class="text-right subtotal"> Subtotal: $210 </h3>
+                        <a class="btn btn-sm btn-danger"> <i class="fa fa-shopping-cart"> </i> VIEW CART </a> <a class="btn btn-sm btn-primary"> CHECKOUT </a>
+                    </div>
+                    <!--/.miniCartFooter-->
+
+                </div>
+                <!--/.cartMenu-->
+            </div>
+            <!--/.navbar-cart-->
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li> <a href="#/home"> Home </a> </li>
+
+                </ul>
+
+                <!--- this part will be hidden for mobile version -->
+
+
+
+                <div class="nav navbar-nav navbar-right hidden-xs">
+
+                    <div ng-controller="CartCtrl as vm">
+
+                        <div ng-cloak class="dropdown  cartMenu ">
+                            <a href="#/cart" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-shopping-cart"> </i>
+                                <span class="cartRespons"> Cart ({{vm.cart.totalItemCount}} items) </span> <b class="caret"> </b>
+                            </a>
+                            <div class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ">
+                                <div class="w100 miniCartTable scroll-pane">
+                                    <table>
+                                        <tbody>
+
+                                            <tr class="miniCartProduct" ng-repeat="product in vm.cart.items">
+                                                <td style="width:20%" class="miniCartProductThumb"><div> <a href="#/productdetail?productId={{product.id}}"> <img src="content/img/testproduct.jpg" alt="img"> </a> </div></td>
+                                                <td style="width:55%">
+                                                    <div class="miniCartDescription">
+                                                        <h4><strong> <a href="#/productdetail?productId={{product.id}}"> {{product.desc}} </a></strong> </h4>
+                                                        <!--<span class="size"> Cheapest Price: £32 </span>-->
+                                                        <div class="price"> <h4> Cheapest Price: £32 </h4> </div>
+                                                    </div>
+                                                </td>
+                                                <td style="width:10%" class="miniCartQuantity"> {{product.qty}} </td>
+                                                <td style="width:5%" class="delete" title="Delete" ng-click="vm.removeFromCart($index)"><a><i class="glyphicon glyphicon-trash"></i> </a></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--/.miniCartTable-->
+
+                                <div class="miniCartFooter text-right">
+                                    <!--<h3 class="text-right subtotal"> Cheapest Option: £250 </h3>-->
+                                    <a href="#/cart" class="btn btn-sm btn-danger"> <i class="fa fa-shopping-cart"> </i> VIEW CART </a>
+                                </div>
+                                <!--/.miniCartFooter-->
+
+                            </div>
+                            <!--/.dropdown-menu-->
+                        </div>
+
+                        <!--/.cartMenu-->
+
+                        <div class="search-box">
+                            <div class="input-group">
+                                <button class="btn btn-nobg getFullSearch" type="button"> <i class="fa fa-search"> </i> </button>
+                            </div>
+                            <!-- /input-group -->
+
+                        </div>
+                        <!--/.search-box -->
+
+
+                    </div>
+
+
+
+                </div>
+                <!--/.navbar-nav hidden-xs-->
+            </div>
+            <!--/.nav-collapse -->
+
+        </div>
+        <!--/.container -->
+
+        <div class="search-full text-right">
+            <a class="pull-right search-close"> <i class=" fa fa-times-circle"> </i> </a>
+            <div class="searchInputBox pull-right">
+                <input type="search" data-searchurl="search?=" name="q" placeholder="start typing and hit enter to search" class="search-input">
+                <button class="btn-nobg search-btn" type="submit"> <i class="fa fa-search"> </i> </button>
+            </div>
+        </div>
+        <!--/.search-full-->
+
+    </div>
+    <!-- /.Fixed navbar  -->
+    <div class="container main-container headerOffset">
+
+        <!-- View(s) -->
+        <ng-view>
+        </ng-view>
+
+    </div>
+    <!-- /main container -->
+
+    <div class="gap"> </div>
+    <div class="gap"> </div>
+
+    <footer>
+        <div class="footer" id="footer">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3  col-md-3 col-sm-4 col-xs-6">
+                        <h3> Support </h3>
+                        <ul>
+                            <li class="supportLi">
+                                <p> Lorem ipsum dolor sit amet, consectetur </p>
+                                <h4> <a class="inline" href="callto:+8801680531352"> <strong> <i class="fa fa-phone"> </i> 88 01680 531352 </strong> </a> </h4>
+                                <h4> <a class="inline" href="mailto:help@chetail.com"> <i class="fa fa-envelope-o"> </i> help@chetail.com </a> </h4>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Shop </h3>
+                        <ul>
+                            <li> <a href="#/home"> Home </a> </li>
+                            <li> <a href="#/cart"> Cart </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Information </h3>
+                        <ul>
+                            <li> <a href=""> Test </a> </li>
+                            <li> <a href=""> Test </a> </li>
+                            <li> <a href=""> Test </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> My Account </h3>
+                        <ul>
+                            <li> <a href=""> My Account </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                        <h3> Stay in touch </h3>
+                        <ul class="social">
+                            <li> <a href="http://facebook.com"> <i class=" fa fa-facebook"> &nbsp; </i> </a> </li>
+                            <li> <a href="http://twitter.com"> <i class="fa fa-twitter"> &nbsp; </i> </a> </li>
+                            <li> <a href="https://plus.google.com"> <i class="fa fa-google-plus"> &nbsp; </i> </a> </li>
+                            <li> <a href="http://youtube.com"> <i class="fa fa-pinterest"> &nbsp; </i> </a> </li>
+                            <li> <a href="http://youtube.com"> <i class="fa fa-youtube"> &nbsp; </i> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="pull-left"> &copy; Chetail 2015. All right reserved. </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ToastrNotifications -->
+    <toaster-container toaster-options="{'position-class': 'toast-bottom-right'}"></toaster-container>
+
+    <!-- Scripts
+    ================================================== -->
+    <!-- General -->
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script src="scripts/angular-local-storage-min.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
+    <script src="scripts/ui-bootstrap-tpls-0.12.1.min.js"></script>
+
+    <!-- Template Specific
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="scripts/template/jquery/1.8.3/jquery.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- include  parallax plugin -->
+    <script type="text/javascript" src="scripts/template/jquery.parallax-1.1.js"></script>
+    <!-- optionally include helper plugins -->
+    <script type="text/javascript" src="scripts/template/helper-plugins/jquery.mousewheel.min.js"></script>
+    <!-- include mCustomScrollbar plugin //Custom Scrollbar  -->
+    <script type="text/javascript" src="scripts/template/jquery.mCustomScrollbar.js"></script>
+    <!-- include checkRadio plugin //Custom check & Radio  -->
+    <script type="text/javascript" src="scripts/template/ion-checkRadio/ion.checkRadio.min.js"></script>
+    <!-- include grid.js // for equal Div height  -->
+    <script src="scripts/template/grids.js"></script>
+    <!-- include carousel slider plugin  -->
+    <script src="scripts/template/owl.carousel.min.js"></script>
+    <!-- jQuery minimalect // custom select   -->
+    <script src="scripts/template/jquery.minimalect.min.js"></script>
+    <!-- include touchspin.js // touch friendly input spinner component   -->
+    <script src="scripts/template/bootstrap.touchspin.js"></script>
+    <!-- include custom script for site  -->
+    <script src="scripts/template/script.js"></script>
+
+    <!-- toastr
+    ================================================== -->
+    <script src="scripts/toaster.min.js"></script>
+
+    <!-- app
+    ================================================== -->
+    <script src="app/app.js"></script>
+    <!-- app / authentication -->
+    <script src="app/components/authentication/httpChetailSvc.js"></script>
+    <script src="app/components/authentication/authSvc.js"></script>
+    <script src="app/components/authentication/authInterceptorSvc.js"></script>
+    <!-- app / home -->
+    <script src="app/components/home/controllers/HomeCtrl.js"></script>
+    <!-- app / cart -->
+    <script src="app/components/cart/services/cartSvc.js"></script>
+    <script src="app/components/cart/controllers/CartCtrl.js"></script>
+    <!-- app / results -->
+    <script src="app/components/results/controllers/ResultsCtrl.js"></script>
+    <!-- app / products -->
+    <script src="app/components/products/services/productsSvc.js"></script>
+    <script src="app/components/products/controllers/ProductsCtrl.js"></script>
+    <script src="app/components/products/controllers/ProductCategoriesCtrl.js"></script>
+    <script src="app/components/products/directives/drCategoriesSidebar.js"></script>
+    <script src="app/components/products/directives/drNewCategory.js"></script>
+    <script src="app/components/products/directives/drNewProduct.js"></script>
+    <script src="app/components/products/directives/drProductListing.js"></script>
+    <script src="app/components/products/controllers/ProductDetailCtrl.js"></script>
+    <script src="app/components/products/directives/drProductPrices.js"></script>
+    <script src="app/components/products/directives/drNewProductPrice.js"></script>
+    <!-- app / wholesalers -->
+    <script src="app/components/wholesalers/services/wholesalersSvc.js"></script>
+    <script src="app/components/wholesalers/controllers/WholesalersCtrl.js"></script>
+    <script src="app/components/wholesalers/directives/drWholesalersSidebar.js"></script>
+    <script src="app/components/wholesalers/directives/drNewWholesaler.js"></script>
+
+</body>
+</html>

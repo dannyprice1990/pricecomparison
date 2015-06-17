@@ -1,0 +1,95 @@
+﻿<div ng-controller="CartCtrl as vm">
+
+    <div class="row">
+        <div class="breadcrumbDiv col-lg-12">
+            <ul class="breadcrumb">
+                <li> <a href="#/home">Home</a> </li>
+                <li class="active">Cart </li>
+            </ul>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-7">
+            <h1 class="section-title-inner"><span><i class="glyphicon glyphicon-shopping-cart"></i> Cart </span></h1>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
+            <h4 class="caps"><a href="#/home"><i class="fa fa-chevron-left"></i> Back to Products </a></h4>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-7 pull-right">
+            <div class="row userInfo">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="cartContent w100">
+                        <table class="cartTable table-responsive" style="width:100%">
+                            <tbody>
+
+                                <tr class="CartProduct cartTableHeader">
+                                    <td style="width:15%"> Product </td>
+                                    <td style="width:65%">Details</td>
+                                    <td style="width:10%" class="delete">&nbsp;</td>
+                                    <td style="width:10%">Qty</td>
+               
+                                </tr>
+
+                                <tr ng-repeat="product in vm.cart.items" class="CartProduct">
+                                    <td class="CartProductThumb"><div> <a href="#/productdetail?productId={{product.id}}"><img src="content/img/testproduct.jpg" alt="img"></a> </div></td>
+                                    <td>
+                                        <div class="CartDescription">
+                                            <h4> <a href="#/productdetail?productId={{product.id}}">{{product.desc}}</a> </h4>
+                                           
+                                        </div>
+                                    </td>
+                                    <td class="delete"><a title="Delete" ng-click="vm.removeFromCart($index)"> <i class="glyphicon glyphicon-trash fa-2x"></i></a></td>
+                                    <td><input class="quanitySniper" type="text" ng-model="product.qty" name="quanitySniper"></td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--cartContent-->
+
+                    <div class="cartFooter w100">
+                        <div class="box-footer">
+                            <div class="pull-left"> <a href="#/home" class="btn btn-default"> <i class="fa fa-arrow-left"></i> &nbsp; Back to Products </a> </div>
+                            <div class="pull-right">
+                                <button type="button" ng-click="vm.updateCart()" class="btn btn-default"> <i class="fa fa-undo"></i> &nbsp; Update cart </button>
+                            </div>
+                        </div>
+                    </div> <!--/ cartFooter -->
+
+                </div>
+            </div>
+            <!--/row end-->
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-5 pull-left">
+            <div class="contentBox">
+                <div class="w100 costDetails">
+                    <div class="table-block" id="order-detail-content">
+                        <a ng-click="vm.postCartResult()" class="btn btn-primary btn-lg btn-block " 
+                           title="checkout" href="" 
+                           style="margin-bottom:20px"> View All Results &nbsp; <i class="fa fa-arrow-right"></i> </a>
+
+                        <!--Wholesalers-->
+                        <div ng-controller="WholesalersCtrl as vm">
+                            <dr-wholesalers-sidebar></dr-wholesalers-sidebar>
+                        </div>
+
+                               
+                            </div>
+                        </div>
+                    </div>
+            <!-- End popular -->
+
+        </div>
+        <!--/rightSidebar-->
+
+    </div><!--/row-->
+
+    <div class="gap"> </div>
+
+</div>

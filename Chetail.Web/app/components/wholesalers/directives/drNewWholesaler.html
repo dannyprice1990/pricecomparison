@@ -1,0 +1,23 @@
+﻿<div class="panel panel-default animated fadeIn">
+    <div class="panel-heading">{{formTitle}}</div>
+    <div class="panel-body">
+        <form name="newWholesalerForm" role="form" ng-submit="submit(newWholesalerForm.$valid)" novalidate>
+
+            <!-- Name -->
+            <div class="form-group" ng-class="{ 'has-error' : newWholesalerForm.name.$invalid && submitted }">
+                <input type="text" name="name" class="form-control" id="inputName" placeholder="Wholesaler Name" ng-model="newWholesaler.name" required autofocus>
+                <p ng-show="newWholesaler.name.$invalid && submitted" class="help-block">Wholesaler name is required</p>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group" ng-class="{ 'has-error' : newWholesalerForm.address.$invalid && submitted }">
+                <input type="text" name="address" class="form-control" id="inputName" placeholder="Wholesaler Address" ng-model="newWholesaler.address" required autofocus>
+                <p ng-show="newWholesaler.address.$invalid && submitted" class="help-block">Wholesaler address is required</p>
+            </div>
+         
+            <button type="submit" class="btn btn-primary pull-right">Save</button>
+            <button type="button" class="btn btn-default pull-right" ng-click="notifyParentCancelled()">Cancel</button>
+
+        </form>
+    </div>
+</div>
